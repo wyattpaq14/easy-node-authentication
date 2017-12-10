@@ -131,6 +131,7 @@ module.exports = function(app, passport) {
 
         // send to google to do the authentication
         app.get('/connect/google', passport.authorize('google', { scope : ['profile', 'email'] }));
+        app.get('/auth/drive',    passport.authenticate('google', { scope: ['drive'] }));
 
         // the callback after google has authorized the user
         app.get('/connect/google/callback',
